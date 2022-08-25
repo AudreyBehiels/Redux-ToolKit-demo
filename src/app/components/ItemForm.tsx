@@ -8,9 +8,16 @@ const ItemForm: FC = () => {
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
 
+     // Clear input fields
+     const clearFields = (): void => {
+        setTitle('');
+        setDescription('');
+    };
+
     // Adds item to list
     const onAddAction = (): void => {
         dispatch(addTodoItemAction({ title, description }));
+        clearFields();
     };
 
     return (
