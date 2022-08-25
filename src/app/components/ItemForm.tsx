@@ -1,8 +1,17 @@
 import React, { FC, useState } from 'react';
+import { useAppDispatch } from '../hooks';
+import { addTodoItemAction } from '../redux/actions';
 
 const ItemForm: FC = () => {
-    const [itemTitle, setItemTitle] = useState<string>('');
-    const [itemDesc, setItemDesc] = useState<string>('');
+    const dispatch = useAppDispatch();
+    // Local State
+    const [title, setTitle] = useState<string>('');
+    const [description, setDescription] = useState<string>('');
+
+    // Adds item to list
+    const onAddAction = (): void => {
+        dispatch(addTodoItemAction({ title, description }));
+    };
 
     return (
         <>
@@ -14,8 +23,11 @@ const ItemForm: FC = () => {
                         <input
                             className="col-8"
                             type="text"
-                            value={itemTitle}
+                            value={title}
                             placeholder="e.g. Clean up room"
+                            onChange={(e: React.FormEvent<HTMLInputElement>) =>
+                                setTitle(e.currentTarget.value)
+                            }
                         ></input>
                     </label>
                     <label className="row">
@@ -25,14 +37,17 @@ const ItemForm: FC = () => {
                             className="col-8"
                             rows={2}
                             cols={20}
-                            value={itemDesc}
+                            value={description}
                             placeholder="bedroom, ..."
+                            onChange={(e: React.FormEvent<HTMLTextAreaElement>) =>
+                                setDescription(e.currentTarget.value)
+                            }
                         ></textarea>
                     </label>
                 </div>
             </div>
 
-            <button type="button" className="btn btn-primary">
+            <button type="button" className="btn btn-primary" onClick={onAddAction}>
                 Add
             </button>
         </>
