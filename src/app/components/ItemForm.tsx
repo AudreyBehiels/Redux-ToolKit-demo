@@ -1,12 +1,21 @@
-import React, { FC, useState } from 'react';
-import { useAppDispatch } from '../hooks';
+import React, { FC, useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../hooks';
 import { addTodoItemAction } from '../redux/actions';
 
 const ItemForm: FC = () => {
     const dispatch = useAppDispatch();
+    const draftItem = useAppSelector(store => store.toDoDraftItem);
+
     // Local State
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
+
+    useEffect(() => {
+        if (draftItem?.title && draftItem?.description) {
+            setTitle(draftItem.title);
+            setDescription(draftItem.description);
+        };
+    }, [draftItem])
 
      // Clear input fields
      const clearFields = (): void => {

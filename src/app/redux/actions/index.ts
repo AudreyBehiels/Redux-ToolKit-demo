@@ -1,5 +1,9 @@
-import { ToDoListActionsType } from "./ListActions";
+import { ToDoListActionsType } from "./listActions";
+import { ToDoItemActionsType } from "./itemActions";
 
-export * from './ListActions';
+export * from './listActions';
+export * from './itemActions';
 
-export type ActionsType = ToDoListActionsType;
+export type ActionsType =
+    | ToDoListActionsType
+    | ToDoItemActionsType;
