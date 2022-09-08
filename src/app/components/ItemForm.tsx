@@ -39,13 +39,13 @@ const ItemForm: FC = () => {
 
     return (
         <>
-            <h3>Create todo list</h3>
+            <h3 className='mb-4'>Create todo list</h3>
             <div className="container">
                 <div>
                     <label className="row">
                         <h4 className="col-4 text-right">Title:</h4>
                         <input
-                            className="col-8"
+                            className="col-6"
                             type="text"
                             value={title}
                             placeholder="e.g. Clean up room"
@@ -58,7 +58,7 @@ const ItemForm: FC = () => {
                         <h4 className="col-4 text-right">Description:</h4>
                         <textarea
                             id="description"
-                            className="col-8"
+                            className="col-6"
                             rows={2}
                             cols={20}
                             value={description}

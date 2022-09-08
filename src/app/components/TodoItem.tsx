@@ -27,25 +27,23 @@ const TodoItem: FC<PropsType> = (props) => {
     };
 
     return (
-        <div className="card" style={{ width: '30rem' }}>
-            <div className="card-body">
-                <button
-                    type="button"
-                    className="btn float-right bg-transparent py-0 px-1"
-                    onClick={() => onRemoveAction(id!)}
-                >
-                    <FontAwesomeIcon icon={icon({ name: 'trash-can' })} color="red" />
-                </button>
-                <button
-                    type="button"
-                    className="btn float-right bg-transparent py-0 px-1"
-                    onClick={() => onEditAction()}
-                >
-                    <FontAwesomeIcon icon={icon({ name: 'pen-to-square' })} color="black" />
-                </button>
-                <h4 className="card-title">{title}</h4>
-                <div className="card-text">{description}</div>
-            </div>
+        <div style={{ width: '25rem' }}>
+            <button
+                type="button"
+                className="btn float-right bg-transparent py-0 px-1"
+                onClick={() => onRemoveAction(id!)}
+            >
+                <FontAwesomeIcon icon={icon({ name: 'trash-can' })} color="red" />
+            </button>
+            <button
+                type="button"
+                className="btn float-right bg-transparent py-0 px-1"
+                onClick={() => onEditAction()}
+            >
+                <FontAwesomeIcon icon={icon({ name: 'pen-to-square' })} color="black" />
+            </button>
+            <h4 className="card-title">{title}</h4>
+            <div className="card-text">{description}</div>
         </div>
     );
 };

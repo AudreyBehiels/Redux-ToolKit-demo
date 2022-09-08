@@ -9,7 +9,7 @@ const TodoList: FC = () => {
         <section>
             <ul className="list-group">
                 {todoList?.map((item) => (
-                    <li key={item.id}>
+                    <li key={item.id} className='list-group-item mb-2'>
                         <TodoItem item={item} />
                     </li>
                 ))}
