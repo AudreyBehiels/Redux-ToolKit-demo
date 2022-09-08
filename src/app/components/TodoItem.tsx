@@ -2,6 +2,8 @@ import React, { FC } from 'react';
 import { TodoItemType } from '../types';
 import { useAppDispatch } from '../hooks';
 import { removeTodoItemAction, setDraftItemAction } from '../redux/actions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 type PropsType = {
     item: TodoItemType;
@@ -9,7 +11,9 @@ type PropsType = {
 
 const TodoItem: FC<PropsType> = (props) => {
     const dispatch = useAppDispatch();
-    const { item: { id, title, description } } = props;
+    const {
+        item: { id, title, description },
+    } = props;
 
     // Removes item from list
     const onRemoveAction = (id: string): void => {
@@ -25,23 +29,22 @@ const TodoItem: FC<PropsType> = (props) => {
     return (
         <div className="card" style={{ width: '30rem' }}>
             <div className="card-body">
-                <h4 className="card-title">{title}</h4>
-                <div className="card-text">{description}</div>
                 <button
                     type="button"
-                    className="btn btn-outline-danger"
+                    className="btn float-right bg-transparent py-0 px-1"
                     onClick={() => onRemoveAction(id!)}
                 >
-                    Remove
+                    <FontAwesomeIcon icon={icon({ name: 'trash-can' })} color="red" />
                 </button>
-
                 <button
                     type="button"
-                    className="btn btn-outline-secondary"
+                    className="btn float-right bg-transparent py-0 px-1"
                     onClick={() => onEditAction()}
                 >
-                    Edit
+                    <FontAwesomeIcon icon={icon({ name: 'pen-to-square' })} color="black" />
                 </button>
+                <h4 className="card-title">{title}</h4>
+                <div className="card-text">{description}</div>
             </div>
         </div>
     );
