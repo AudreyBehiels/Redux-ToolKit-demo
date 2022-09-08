@@ -1,24 +1,26 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks';
-import { addTodoItemAction } from '../redux/actions';
+import { addTodoItemAction, updateTodoItemAction } from '../redux/actions';
 
 const ItemForm: FC = () => {
     const dispatch = useAppDispatch();
-    const draftItem = useAppSelector(store => store.toDoDraftItem);
+    const draftItem = useAppSelector((store) => store.toDoDraftItem);
 
     // Local State
+    const [id, seId] = useState<string>('');
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
 
     useEffect(() => {
         if (draftItem?.title && draftItem?.description) {
+            seId(draftItem.id!);
             setTitle(draftItem.title);
             setDescription(draftItem.description);
-        };
-    }, [draftItem])
+        }
+    }, [draftItem]);
 
-     // Clear input fields
-     const clearFields = (): void => {
+    // Clear input fields
+    const clearFields = (): void => {
         setTitle('');
         setDescription('');
     };
@@ -26,6 +28,12 @@ const ItemForm: FC = () => {
     // Adds item to list
     const onAddAction = (): void => {
         dispatch(addTodoItemAction({ title, description }));
+        clearFields();
+    };
+
+     // Updates selected item in list
+     const onUpdateAction = (): void => {
+        dispatch(updateTodoItemAction({ id, title, description }));
         clearFields();
     };
 
@@ -62,10 +70,15 @@ const ItemForm: FC = () => {
                     </label>
                 </div>
             </div>
-
-            <button type="button" className="btn btn-primary" onClick={onAddAction}>
-                Add
-            </button>
+            {draftItem.title ? (
+                <button type="button" className="btn btn-info" onClick={onUpdateAction}>
+                    Update
+                </button>
+            ) : (
+                <button type="button" className="btn btn-primary" onClick={onAddAction}>
+                    Add
+                </button>
+            )}
         </>
     );
 };
