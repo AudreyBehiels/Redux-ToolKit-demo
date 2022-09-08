@@ -1,4 +1,4 @@
-import { createReducer } from '@reduxjs/toolkit';
+import { createReducer, current } from '@reduxjs/toolkit';
 import { TodoItemType } from '../../types';
 import { SetDraftItemActionType, TodoItemActions } from '../actions';
 
@@ -10,7 +10,7 @@ export const initialState: TodoItemType = {
 
 const draftItem = createReducer(initialState, (builder) => {
     builder
-        .addCase(TodoItemActions.SET_DRAFT_ITEM, (state, action: SetDraftItemActionType) => {
+        .addCase(TodoItemActions.SET_DRAFT_ITEM, (_state, action: SetDraftItemActionType) => {
             return action.payload.draftItem;
         })
         .addDefaultCase((): any => {

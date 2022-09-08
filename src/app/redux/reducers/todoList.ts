@@ -4,6 +4,8 @@ import { TodoItemType } from '../../types';
 import {
     AddTodoItemActionType,
     RemoveTodoItemActionType,
+    SetDraftItemActionType,
+    TodoItemActions,
     TodoListActions,
     UpdateTodoItemActiontype,
 } from '../actions';
@@ -31,6 +33,9 @@ const todoList = createReducer(initialState, (builder) => {
             if (!item) return state;
             item.description = description;
             item.title = title;
+            return state;
+        })
+        .addCase(TodoItemActions.SET_DRAFT_ITEM, (state, action: SetDraftItemActionType) => {
             return state;
         })
         .addDefaultCase((): any => {
