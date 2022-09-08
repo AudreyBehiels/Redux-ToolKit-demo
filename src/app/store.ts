@@ -3,6 +3,7 @@ import draftItem from './redux/reducers/draftItem';
 import todoList from './redux/reducers/todoList';
 
 export const store = configureStore({
+  // Object of "slice reducers"
   reducer: {
     todoList,
     toDoDraftItem: draftItem,
