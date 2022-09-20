@@ -31,44 +31,45 @@ const ItemForm: FC = () => {
         clearFields();
     };
 
-     // Updates selected item in list
-     const onUpdateAction = (): void => {
+    // Updates selected item in list
+    const onUpdateAction = (): void => {
         dispatch(updateTodoItemAction({ id, title, description }));
         clearFields();
     };
 
     return (
         <>
-            <h3 className='mb-4'>Create todo list</h3>
+            <h3 className="mb-4">Create todo list</h3>
             <div className="container">
-                <div>
-                    <label className="row">
-                        <h4 className="col-4 text-right">Title:</h4>
-                        <input
-                            className="col-6"
-                            type="text"
-                            value={title}
-                            placeholder="e.g. Clean up room"
-                            onChange={(e: React.FormEvent<HTMLInputElement>) =>
-                                setTitle(e.currentTarget.value)
-                            }
-                        ></input>
+                <form>
+                    <label className="row" htmlFor="title">
+                        <h4 className="col-12">Title:</h4>
                     </label>
-                    <label className="row">
-                        <h4 className="col-4 text-right">Description:</h4>
-                        <textarea
-                            id="description"
-                            className="col-6"
-                            rows={2}
-                            cols={20}
-                            value={description}
-                            placeholder="bedroom, ..."
-                            onChange={(e: React.FormEvent<HTMLTextAreaElement>) =>
-                                setDescription(e.currentTarget.value)
-                            }
-                        ></textarea>
+                    <input
+                        id="title"
+                        className="col-12"
+                        type="text"
+                        value={title}
+                        placeholder="e.g. Clean up room"
+                        onChange={(e: React.FormEvent<HTMLInputElement>) =>
+                            setTitle(e.currentTarget.value)
+                        }
+                    ></input>
+                    <label className="row" htmlFor='description'>
+                        <h4 className="col-12">Description:</h4>
                     </label>
-                </div>
+                    <textarea
+                        id="description"
+                        className="col-12"
+                        rows={2}
+                        cols={20}
+                        value={description}
+                        placeholder="bedroom, ..."
+                        onChange={(e: React.FormEvent<HTMLTextAreaElement>) =>
+                            setDescription(e.currentTarget.value)
+                        }
+                    ></textarea>
+                </form>
             </div>
             {draftItem.title ? (
                 <button type="button" className="btn btn-info" onClick={onUpdateAction}>
