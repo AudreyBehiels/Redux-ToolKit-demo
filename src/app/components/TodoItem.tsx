@@ -16,8 +16,8 @@ const TodoItem: FC<PropsType> = (props) => {
     } = props;
 
     // Removes item from list
-    const onRemoveAction = (id: string): void => {
-        dispatch(removeTodoItemAction({ id }));
+    const onRemoveAction = (): void => {
+        dispatch(removeTodoItemAction({ id: id! }));
     };
 
     // Set selected item in store as draft item
@@ -31,7 +31,7 @@ const TodoItem: FC<PropsType> = (props) => {
             <button
                 type="button"
                 className="btn float-right bg-transparent py-0 px-1"
-                onClick={() => onRemoveAction(id!)}
+                onClick={() => onRemoveAction()}
             >
                 <FontAwesomeIcon icon={icon({ name: 'trash-can' })} color="red" />
             </button>
