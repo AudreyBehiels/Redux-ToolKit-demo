@@ -11,7 +11,7 @@ import {
 } from '../actions';
 
 export const initialState: TodoItemType[] = [
-    { id: 'item-0', title: 'Test', description: 'This is a test item' },
+    { id: 'item-0', title: 'Kuisen', description: 'Keuken vegen, vaatwas vullen' },
 ];
 
 const todoList = createReducer(initialState, (builder) => {
