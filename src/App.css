@@ -57,7 +57,7 @@ input,textarea {
   margin-bottom: 1.5rem;
 }
 
-.btn-primary {
+.btn-primary, .btn-info {
   width: 50%;
   border-radius: 0.25rem;
 }
